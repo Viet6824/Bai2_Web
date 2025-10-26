@@ -86,7 +86,7 @@ node "D:\nodejs\nodered\node_modules\node-red\red.js" -u "D:\nodejs\nodered\work
 - Mở CMD với quyền Admin và chạy lệnh iisreset /stop  
 Vô hiệu hóa iis   
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e0890188-5f6a-49cb-a93f-51593eac1a6c" />  
-####  Bước 2: Tải xuống Apache Web Server, giải nén trên ổ D
+### Bước 2: Tải xuống Apache Web Server, giải nén trên ổ D  
 - Truy cập link https://www.apachelounge.com/download/ để tải Apache về máy.  
 - Sau khi tải xuống, giải nén vào thư mục D:\apache\Apache24  
 - giải nén  
@@ -114,25 +114,25 @@ Trong thẻ <VirtualHost *:80>
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fbcb83b4-d4ea-42e0-b748-9991016e9871" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aff1367c-7868-4928-8e8b-5bf5c41e29c9" />
 ### 2.3. Tạo CSDL
-Thiết kế cơ sở dữ liệu chứa các thông tin về các sản phẩm trong một web bán sách.  
-- Database name: Nhan_vien  
-- Port: 1434  
-- Username: sa  
-- Table name: nv   
-- Server name: DESKTOP-0GSB4AN  
+Thiết kế cơ sở dữ liệu chứa các thông tin về các sản phẩm trong một web bán sách.
+- Database name: Nhan_vien
+- Port: 1434
+- Username: sa
+- Table name: nv
+- Server name: DESKTOP-0GSB4AN
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a55aa0fc-b262-45a9-8118-d1c7e73281a1" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0a4f86a5-e91f-4403-8776-8c52f2eede91" />
-2.4. Cài đặt thư viện trên Notered  
-Mở NOTERED bằng url trên trình duyệt: localhost:1880  
-Chọn Manage Palette rồi chọn Install  
-Cài đặt các thư viện:  
-node-red-contrib-mssql-plus  
-node-red-node-mysql  
-node-red-contrib-telegrambot  
-node-red-contrib-moment  
-node-red-contrib-influxdb  
-node-red-contrib-duckdns  
-node-red-contrib-cron-plus  
+### 2.4. Cài đặt thư viện trên Notered  
+- Mở NOTERED bằng url trên trình duyệt: localhost:1880  
+- Chọn Manage Palette rồi chọn Install  
+- Cài đặt các thư viện:  
++ node-red-contrib-mssql-plus  
++ node-red-node-mysql  
++ node-red-contrib-telegrambot  
++ node-red-contrib-moment  
++ node-red-contrib-influxdb  
++ node-red-contrib-duckdns  
++ node-red-contrib-cron-plus  
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f9792d01-d599-4eab-ab6e-1c7466d6ab96" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d520df1d-a724-4c4d-adc9-79feee7d64cf" />
 
