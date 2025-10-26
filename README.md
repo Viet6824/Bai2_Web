@@ -112,7 +112,7 @@ Trong thẻ <VirtualHost *:80>
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/71de6d48-e86d-4c7a-bcf0-559f9e093e64" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/80d92202-45d7-4a5f-9e58-06a99ee41a32" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fbcb83b4-d4ea-42e0-b748-9991016e9871" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aff1367c-7868-4928-8e8b-5bf5c41e29c9" />
+
 ### 2.3. Tạo CSDL
 Thiết kế cơ sở dữ liệu chứa các thông tin về các sản phẩm trong một web bán sách.
 - Database name: Nhan_vien
@@ -132,21 +132,24 @@ Thiết kế cơ sở dữ liệu chứa các thông tin về các sản phẩm 
 + node-red-contrib-moment  
 + node-red-contrib-influxdb  
 + node-red-contrib-duckdns  
-+ node-red-contrib-cron-plus  
++ node-red-contrib-cron-plus
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aff1367c-7868-4928-8e8b-5bf5c41e29c9" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f9792d01-d599-4eab-ab6e-1c7466d6ab96" />
+- Mở file cấu hình: ```D:\nodejs\nodered\work\settings.js```
+- Tìm phần adminAuth, uncomment (bỏ //):
+- Sửa chuỗi mã hóa mật khẩu bằng chuỗi mới (chuỗi mã hóa mật khẩu có thể được thiết lập bằng tool ```https://tms.tnut.edu.vn/pw.php```)
+- Chạy lại Nodered bằng cmd, vào thư mục ```D:\nodejs\nodered``` và chạy lệnh ```nssm restart a1-nodered```:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d520df1d-a724-4c4d-adc9-79feee7d64cf" />
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e853337e-8687-4196-b38c-020b831a8201" />
-
+- Sau khi chạy lệnh thành công, Notedred sẽ yêu cầu mật khẩu mới khi đăng nhập:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/22b073bc-24c7-4ee4-abae-f2ffbc087641" />
+### 2.5. Tạo API backend bằng Notered
 <img width="1920" height="1080" alt="Ảnh chụp màn hình (512)" src="https://github.com/user-attachments/assets/f459efd0-309d-4c30-9139-d0bffd685683" />
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7bcf304d-f37b-4da2-9c7a-0f051f0f9260" />
-
 <img width="1920" height="1080" alt="Ảnh chụp màn hình (516)" src="https://github.com/user-attachments/assets/9e1441c6-1edc-411c-afb3-1ae480b04735" />
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2accc70e-6f76-4656-b2c2-6bd20c7f8d7a" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ab127bb-6e68-46b9-ba6d-efd24c555d6e" />
+#### Test API tìm kiếm 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/13c2400e-38ad-4761-a2e9-44bc96fe295b" />
 #### Kết quả 
 <img width="1831" height="812" alt="Ảnh chụp màn hình (528)" src="https://github.com/user-attachments/assets/ce6a0a15-40a8-4764-97a7-a1adc1f470da" />
