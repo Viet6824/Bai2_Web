@@ -113,13 +113,13 @@ Trong thẻ <VirtualHost *:80>
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/80d92202-45d7-4a5f-9e58-06a99ee41a32" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fbcb83b4-d4ea-42e0-b748-9991016e9871" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aff1367c-7868-4928-8e8b-5bf5c41e29c9" />
-2.3. Tạo CSDL
+### 2.3. Tạo CSDL
 Thiết kế cơ sở dữ liệu chứa các thông tin về các sản phẩm trong một web bán sách.  
-Database name: Nhan_vien  
-Port: 1434  
-Username: sa  
-Table name:   
-Server name: DESKTOP-0GSB4AN  
+- Database name: Nhan_vien  
+- Port: 1434  
+- Username: sa  
+- Table name: nv   
+- Server name: DESKTOP-0GSB4AN  
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a55aa0fc-b262-45a9-8118-d1c7e73281a1" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0a4f86a5-e91f-4403-8776-8c52f2eede91" />
 2.4. Cài đặt thư viện trên Notered  
@@ -148,4 +148,31 @@ node-red-contrib-cron-plus
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2accc70e-6f76-4656-b2c2-6bd20c7f8d7a" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ab127bb-6e68-46b9-ba6d-efd24c555d6e" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/13c2400e-38ad-4761-a2e9-44bc96fe295b" />
+#### Kết quả 
 <img width="1831" height="812" alt="Ảnh chụp màn hình (528)" src="https://github.com/user-attachments/assets/ce6a0a15-40a8-4764-97a7-a1adc1f470da" />
+### 2.7. Nhận xét bài làm
+####  Đã hiểu quá trình cài đặt các phần mềm và các thư viện như nào?
+- Quá trình cài đặt giúp em hiểu rõ cách các thành phần trong hệ thống web hoạt động cùng nhau. Em bắt đầu từ việc cài đặt Apache HTTP Server để làm web server, cấu hình `httpd.conf` và `hosts` để truy cập qua tên miền nguyentrunghieu.com. Tiếp theo, em cài Node.js và Node-RED – công cụ chính để xây dựng API back-end. Việc tạo CSDL giúp em nắm rõ cách thiết kế cơ sở dữ liệu phù hợp cho ứng dụng bán sách.
+- Quá trình cài đặt thư viện tương đối đơn giản, tìm kiếm và tải xuống lần lượt các thư viện theo yêu cầu của thầy.
+- Em cũng gặp một chút khó khăn khi file nssm.exe không cài đặt được, nhưng đã khắc phục bằng một số lệnh cmd và cấu hình dịch vụ thành công. Tất cả các bước đều được thực hiện cẩn thận, kiểm tra từng phần, giúp em hiểu rõ tính tương thích, quyền admin, và cấu hình service.
+
+<strong>Qua đó em hiểu rõ và làm chủ được toàn bộ quy trình cài đặt, từ phần mềm đến thư viện, và biết cách xử lý lỗi thực tế.</strong>
+#### Đã hiểu cách sử dụng nodered để tạo api back-end như nào?
+- Node-RED là một công cụ mạnh mẽ, trực quan, giúp em xây dựng API back-end mà không cần viết server phức tạp. Em đã tạo một API GET /timkiem nhận tham số q, truy vấn CSDL SQL Server, và trả về dữ liệu dạng JSON.
+- Em đã hiểu về việc:
+   + Dùng node http in để nhận request
+   + Dùng node function để xử lý tham số, tạo câu SQL
+   + Dùng node mssql để thực thi truy vấn
+   + Dùng node http response để trả JSON
+   + Dùng msg.topic và msg.queryType để điều khiển luồng dữ liệu
+
+- Việc debug qua tab Debug và test API bằng trình duyệt giúp em nắm chắc cách hoạt động của từng node.
+- Qua đây em đã nắm được cách dùng Node-RED làm back-end, từ thiết kế flow đến xử lý dữ liệu và trả response.
+#### Đã hiểu cách frond-end tương tác với back-end ra sao?
+Front-end (nguyentrunghieu.com) và back-end (localhost:1880) được kết nối hoàn toàn qua API RESTful. Em hiểu rõ:
+   + frontend gọi api
+   + backend trả về json -> frontend nhận và hiển thị lên giao diện
+   + dữ liệu từ MSSQL -> API -> frontend -> hiển thị real time
+   + tìm kiếm live, tự động tải toàn bộ danh sách khi vào trang
+
+<strong> Kết luận: Em đã hiểu cách front-end và back-end tương tác, từ gọi API, xử lý JSON, đến render giao diện động.</strong>
