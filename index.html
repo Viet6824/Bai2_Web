@@ -1,0 +1,187 @@
+\<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tra cứu thông tin nhân viên</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #cbefff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 80px auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #0078d7;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 60%;
+      padding: 10px 14px;
+      border: 2px solid #0078d7;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #005a9e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #0078d7;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e6f3ff;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #444;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Tra cứu thông tin nhân viên</h1>
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Nhập tên hoặc ID nhân viên...">
+      <button id="btnSearch">Tìm kiếm</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên nhân viên</th>
+          <th>Giới tính</th>
+          <th>SDT</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="ketqua">
+        <tr><td colspan="5">⏳ Đang tải dữ liệu...</td></tr>
+      </tbody>
+    </table>
+
+    <footer>© 2025 - Thiết kế bởi <b>Nguyễn Đức Việt</b></footer>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:1880/timkiem";
+
+    const tableBody = document.getElementById("ketqua");
+    const searchInput = document.getElementById("search");
+    const searchBtn = document.getElementById("btnSearch");
+
+    // 🔹 Hàm hiển thị dữ liệu ra bảng
+    function renderTable(data) {
+      if (!data || data.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5">⚠️ Không tìm thấy nhân viên nào!</td></tr>`;
+        return;
+      }
+
+      tableBody.innerHTML = data.map(nv => `
+        <tr>
+          <td>${nv.id}</td>
+          <td>${nv.ten}</td>
+          <td>${nv.gioitinh}</td>
+          <td>${nv.sdt}</td>
+          <td>${nv.gmail}</td>
+        </tr>
+      `).join('');
+    }
+
+    // 🔹 Hàm tải toàn bộ nhân viên
+    async function loadAllEmployees() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        renderTable(data);
+      } catch (err) {
+        console.error("Lỗi tải dữ liệu:", err);
+        tableBody.innerHTML = `<tr><td colspan="5" style="color:red;">❌ Không kết nối được tới máy chủ Node-RED!</td></tr>`;
+      }
+    }
+
+    // 🔹 Hàm tìm kiếm
+    async function searchEmployee() {
+      const keyword = searchInput.value.trim().toLowerCase();
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        const filtered = data.filter(nv =>
+          nv.ten.toLowerCase().includes(keyword) ||
+          nv.id.toString().includes(keyword)
+        );
+        renderTable(filtered);
+      } catch (err) {
+        console.error("Lỗi tìm kiếm:", err);
+      }
+    }
+
+    // 🔹 Gắn sự kiện
+    searchBtn.addEventListener("click", searchEmployee);
+    searchInput.addEventListener("input", () => {
+      clearTimeout(window._typingTimer);
+      window._typingTimer = setTimeout(searchEmployee, 500);
+    });
+
+    // 🔹 Tự tải khi mở trang
+    window.addEventListener("load", loadAllEmployees);
+  </script>
+</body>
+</html>
